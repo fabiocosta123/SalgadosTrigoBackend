@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SalgadosTrigo.Api.Services.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using SalgadosTrigo.Api.Contracts.Identity;
+using SalgadosTrigo.Api.Services.Identity;
+using System.Security.Claims;
 
 namespace SalgadosTrigo.Api.Controllers.Identity
 {
@@ -22,6 +25,15 @@ namespace SalgadosTrigo.Api.Controllers.Identity
                     statusCode: StatusCodes.Status401Unauthorized
                 );
             }
+
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, session.Id.ToString()),
+                new Claim(ClaimTypes.Role, session.RoleCode)
+            };
+
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            await HttpContext.SignInAsync(new ClaimsPrincipal(identity));
 
             return Ok(session);
         }

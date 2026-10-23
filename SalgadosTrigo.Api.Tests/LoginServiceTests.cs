@@ -23,6 +23,7 @@ public class LoginServiceTests
         Assert.NotNull(session);
         Assert.Equal("Ana", session.Name);
         Assert.Equal(4, session.RoleId);
+        Assert.Equal("vendedor", session.RoleCode);
     }
 
     [Fact]
