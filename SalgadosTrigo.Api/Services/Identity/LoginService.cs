@@ -24,12 +24,16 @@ namespace SalgadosTrigo.Api.Services.Identity
                 return null;
             }
 
+            var role = await db.Roles.SingleAsync(r => r.Id == user.RoleId);
+
             return new LoginResponse
             {
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email,
-                RoleId = user.RoleId
+                RoleId = user.RoleId,
+                RoleCode = role.Code
+
             };
         }
     }
