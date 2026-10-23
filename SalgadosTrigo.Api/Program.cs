@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SalgadosTrigo.Api.Data;
+using SalgadosTrigo.Api.Services.Identity;
+using SalgadosTrigo.Api.Entities.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,10 @@ builder.Services.AddOpenApi();
 // Add services for dependency injection
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+
+// add scoped
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddScoped<LoginService>();
 
 var app = builder.Build();
 
