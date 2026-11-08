@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SalgadosTrigo.Api.Data;
+using SalgadosTrigo.Api.Services.Catalog;
 using SalgadosTrigo.Api.Services.Identity;
 using SalgadosTrigo.Api.Entities.Identity;
 using SalgadosTrigo.Api.Authorization;
@@ -21,6 +22,7 @@ options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 // add scoped
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<LoginService>();
+builder.Services.AddScoped<ProductService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
