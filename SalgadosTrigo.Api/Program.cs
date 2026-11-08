@@ -23,6 +23,7 @@ options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<LoginService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<CustomerService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
