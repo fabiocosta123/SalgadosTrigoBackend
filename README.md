@@ -25,7 +25,16 @@ dotnet ef database update
 
 Essa migration cria só `roles` e `users`. `roles` nasce com os cinco códigos: `administrador`, `gerente`, `funcionario`, `vendedor` e `financeiro`. `users` nasce vazia.
 
-## Testes
+## Migration de cadastros
+
+Na pasta da solução:
+
+```powershell
+dotnet ef migrations add Catalogs --project SalgadosTrigo.Api
+dotnet ef database update --project SalgadosTrigo.Api
+
+
+## O teste confere o modelo do Entity Framework: tabelas, tamanhos, índices únicos e chaves estrangeiras. Ele não conecta no banco.
 
 Na pasta da solução:
 
