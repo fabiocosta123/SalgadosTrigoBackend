@@ -24,15 +24,10 @@ public class IdentityModelTests
     }
 
     [Fact]
-    public void Model_contains_only_roles_and_users()
+    public void Roles_and_users_remain_in_the_model()
     {
-        var tables = new[] { _role, _user }
-            .Select(entity => entity.GetTableName())
-            .OrderBy(name => name)
-            .ToArray();
-
-        Assert.Equal(new[] { "roles", "users" }, tables);
-        Assert.Equal(2, _role.Model.GetEntityTypes().Count());
+        Assert.Equal("roles", _role.GetTableName());
+        Assert.Equal("users", _user.GetTableName());
     }
 
     [Fact]
@@ -67,4 +62,6 @@ public class IdentityModelTests
         Assert.Equal(nameof(User.RoleId), roleKey.Properties.Single().Name);
         Assert.Equal(DeleteBehavior.Restrict, roleKey.DeleteBehavior);
     }
+
+    
 }
