@@ -39,8 +39,21 @@ public class CatalogModelTests
             .ToArray();
 
         Assert.Equal(
-            new[] { "customers", "products", "recipe_items", "recipes", "roles", "suppliers", "users" },
-            tables);
+    new[]
+    {
+        "customers",
+        "products",
+        "purchase_entries",
+        "purchase_entry_items",
+        "recipe_items",
+        "recipes",
+        "roles",
+        "stock_balances",
+        "stock_movements",
+        "suppliers",
+        "users"
+    },
+    tables);
     }
 
     [Fact]

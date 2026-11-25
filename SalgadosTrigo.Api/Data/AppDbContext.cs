@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SalgadosTrigo.Api.Entities.Catalog;
 using SalgadosTrigo.Api.Entities.Identity;
+using SalgadosTrigo.Api.Entities.Stock;
 
 namespace SalgadosTrigo.Api.Data
 {
@@ -18,6 +19,10 @@ namespace SalgadosTrigo.Api.Data
         public DbSet<Product> Products => Set<Product>();
         public DbSet<Recipe> Recipes => Set<Recipe>();
         public DbSet<RecipeItem> RecipeItems => Set<RecipeItem>();
+        public DbSet<StockBalance> StockBalances => Set<StockBalance>();
+        public DbSet<StockMovement> StockMovements => Set<StockMovement>();
+        public DbSet<PurchaseEntry> PurchaseEntries => Set<PurchaseEntry>();
+        public DbSet<PurchaseEntryItem> PurchaseEntryItems => Set<PurchaseEntryItem>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
