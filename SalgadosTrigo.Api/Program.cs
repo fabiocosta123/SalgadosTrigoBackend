@@ -28,6 +28,7 @@ builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<SupplierService>();
 builder.Services.AddScoped<RecipeService>();
 builder.Services.AddScoped<StockPostingService>();
+builder.Services.AddScoped<PurchaseEntryService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

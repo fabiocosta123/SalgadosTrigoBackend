@@ -62,7 +62,8 @@ namespace SalgadosTrigo.Api.Services.Stock
                 return StockPostingResult.Rejected("O saldo não pode ficar negativo.");
             }
 
-            await using var transaction = db.Database.IsRelational()
+            var ownsTransaction = db.Database.CurrentTransaction is null && db.Database.IsRelational();
+            await using var transaction = ownsTransaction
                 ? await db.Database.BeginTransactionAsync()
                 : null;
 
