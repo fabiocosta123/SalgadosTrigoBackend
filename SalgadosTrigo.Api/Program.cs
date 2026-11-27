@@ -5,6 +5,7 @@ using SalgadosTrigo.Api.Services.Catalog;
 using SalgadosTrigo.Api.Services.Identity;
 using SalgadosTrigo.Api.Entities.Identity;
 using SalgadosTrigo.Api.Authorization;
+using SalgadosTrigo.Api.Services.Stock;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,7 @@ builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<SupplierService>();
 builder.Services.AddScoped<RecipeService>();
+builder.Services.AddScoped<StockPostingService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
